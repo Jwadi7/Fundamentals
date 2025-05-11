@@ -1,0 +1,36 @@
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+/**/
+vector<string> solve(vector<string> v){
+    int size = v.size();
+    string begin = "Begin";
+    string left = "Left";
+    string right = "Right";
+    string test = "";
+    vector<string> tests = {};
+    vector<string> result;
+    for(int i = size -1; i>= 0; i--) {
+        for(int j =0; j< begin.length(); j++) {
+            test += v.at(i)[j];
+            if(test == left || test == right || test == begin) {
+                tests.push_back(test);
+                result.push_back(v.at(i));
+                test = "";
+                if (tests.size() == 1) {
+                    result.at(size - i - 1).replace(0, v.at(i).find(' ') + 1, "Begin ");} 
+                else {
+                    string& current = result.at(size - i - 1);
+                    if (tests.at(tests.size() - 2) == right) {
+                        current.replace(0, v.at(i).find(' ') + 1, "Left ");} 
+                    else if (tests.at(tests.size() - 2) == left) {
+                        current.replace(0, v.at(i).find(' ') + 1, "Right ");}}}}
+        test = "";}
+    return result;}
+int main(){
+    vector<string> test = solve({"Begin on Road A","Right on Road B","Right on Road C","Left on Road D"});
+    cout << boolalpha;
+    for(int i = 0; i<test.size(); i++){
+        cout << "( "<< test.at(i) << " ), ";}
+    return 0;}
