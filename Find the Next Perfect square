@@ -1,0 +1,11 @@
+#include <cmath>
+using namespace std;
+
+long int findNextSquare(long int sq) {
+    double squareroot= sqrt(double(sq));
+    if(squareroot == (int) sqrt(sq))
+    {
+        return pow(squareroot +1, 2);
+    }
+  return -1;
+}
