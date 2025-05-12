@@ -1,0 +1,23 @@
+#include <string>
+
+using namespace std;
+
+bool is_isogram(const string& str)
+{
+    for(int i =0; i<str.length(); i++)
+    {
+        char lowercase = tolower(str[i]);
+        char uppercase = toupper(str[i]);
+        if(str.find(lowercase) != string::npos)
+        {
+            if(i != str.find(lowercase)) {return false;} 
+        }
+        if(str.find(uppercase) != string::npos)
+        {
+            if(i != str.find(uppercase)) {return false;}
+        }
+        
+    }
+
+    return true;
+}
