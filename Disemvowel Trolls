@@ -1,0 +1,43 @@
+using namespace std;
+
+# include <string>
+// #include <algorithm>
+// string disemvowel(string& str) {
+//     str.erase(remove(str.begin(), str.end(), 'a'));
+//     str.erase(remove(str.begin(), str.end(), 'A'));
+//     str.erase(remove(str.begin(), str.end(), 'u'));
+//     str.erase(remove(str.begin(), str.end(), 'U'));
+//     str.erase(remove(str.begin(), str.end(), 'o'));
+//     str.erase(remove(str.begin(), str.end(), 'O'));
+//     str.erase(remove(str.begin(), str.end(), 'i'));
+//     str.erase(remove(str.begin(), str.end(), 'I'));
+//     str.erase(remove(str.begin(), str.end(), 'e'));
+//     str.erase(remove(str.begin(), str.end(), 'E'));
+//     return str;
+// }
+
+// string disemvowel(const string& str) {
+//     string result = "";
+//     int length = str.length();
+//     for(int i =0; i<length; i++)
+//     {
+//         if(str[i] == 'a'||str[i] == 'A'||str[i] == 'u'||str[i] == 'U'||str[i] == 'o'||str[i] == 'O'||str[i] == 'i'||str[i] == 'I'||str[i] == 'e'||str[i] == 'E') 
+//         { continue;}
+//         result += str[i];
+//     }
+//     return result;
+// }
+string disemvowel(const string& str) {
+    string result = "";
+    int length = str.length();
+    for(char ch: str)
+    {
+        switch(tolower(ch)){
+            case 'a': case 'o': case 'u': case 'i': case 'e':
+            continue;
+        }
+        result += ch;
+    }
+    return result;
+}
+
