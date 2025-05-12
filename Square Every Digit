@@ -1,0 +1,16 @@
+using namespace std;
+
+# include <string>
+int square_digits(int num) {
+    string number = to_string(num);
+    string result = "";
+    int length  = number.length();
+    for(char ch:number)
+    {
+        int num_1 = ch - '0';
+        num_1 = num_1 *num_1;
+        result += to_string(num_1);
+    }
+    int fresult = stoi(result);
+ return fresult;
+}
