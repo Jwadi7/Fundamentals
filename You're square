@@ -1,0 +1,10 @@
+#include <cmath>
+using namespace std;
+
+bool is_square(int n)
+{
+    int Thesqrn = sqrt(n);
+    float Thsqrn = sqrt(float(n));
+    if(Thesqrn == Thsqrn) {return true;}
+    return false;
+}
