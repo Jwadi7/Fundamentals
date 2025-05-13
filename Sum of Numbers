@@ -1,0 +1,14 @@
+int get_sum(int a, int b)
+{
+  int result = 0;
+  for(int i = a;;)
+    {
+    result += i;
+    if(i==b)
+    {
+        break;
+    }
+    if(a<=b) {i++;}
+    else {i--;}
+  }
+  return result;
