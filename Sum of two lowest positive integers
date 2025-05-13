@@ -1,0 +1,10 @@
+using namespace std;
+#include <algorithm>
+#include <vector>
+
+long sumTwoSmallestNumbers(std::vector<int> numbers)
+{
+    sort(numbers.begin(), numbers.end());
+    int result = numbers.at(0) + numbers.at(1);
+    return result;
+}
