@@ -1,0 +1,26 @@
+#include <vector>
+#include <string>
+using namespace std;
+
+bool is_dd(int n){
+    int count = 0;
+    string stringn = to_string(n);
+    for(int i =1; i<10; i++)
+    {
+        for(int j =0; j<stringn.length(); j++) {
+            if(stringn[j] - '0'== i)
+            {
+                count++;
+            }
+        }
+        if(count == i)
+        {
+            return true;
+        }
+        else
+        {
+            count =0;
+        }
+    }
+    return false;
+}
