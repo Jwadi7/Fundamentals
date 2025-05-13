@@ -1,0 +1,17 @@
+#include <vector>
+#include <string>
+#include <algorithm>
+using namespace std;
+int find_short(string str) {
+    vector<int> wlens = {};
+    int counter = 0;
+    for(int i =0; i<str.length(); i++) {
+        if(str[i] == ' ' || i == str.length()-1) {
+            if(i == str.length()-1) {counter++;}
+            wlens.push_back(counter);
+            counter  =0;}
+        else { counter++;}}
+    int result = wlens.at(0);
+    for(int i =0; i<wlens.size(); i++){
+        if(wlens.at(i) < result) { result = wlens.at(i);}}
+  return result;}
