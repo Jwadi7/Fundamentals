@@ -1,0 +1,22 @@
+#include <vector>
+#include <string>
+using namespace std;
+
+string highAndLow(const string& numbers){
+    string numb = "";
+    vector<int> inumbs = {};
+    for(int i =0; i<numbers.length(); i++) {
+        if(!isspace(numbers[i])) { numb += numbers[i];}
+        if(isspace(numbers[i]) || i == numbers.length()-1) {
+            int numb1 = stoi(numb);
+            inumbs.push_back(numb1);
+            numb = "";}}
+    int max = inumbs.at(0);
+    int min = inumbs.at(0);
+    for(int x =0; x<inumbs.size(); x++) {
+        if(inumbs.at(x) >max) { max = inumbs.at(x);}
+        if(inumbs.at(x) < min) { min = inumbs.at(x);}}
+    string resmin = to_string(min);
+    string resmax = to_string(max);
+    string fresult = resmax + " " + resmin;
+    return fresult;}
