@@ -1,0 +1,24 @@
+#include <string>
+using namespace std;
+
+class Printer
+{
+public:
+    static string printerError(const string &s){
+        int numOferr = 0;
+        int slength = s.length();
+        for(int i = 0; i<s.length(); i++)
+        {
+            if(s[i] > 'm')
+            {
+                numOferr++;
+            }
+                
+        }
+        string res1 = to_string(slength);
+        string res2 = to_string(numOferr);
+        string fresult = res2 + '/' + res1;
+        return fresult;
+    }
+};
+
