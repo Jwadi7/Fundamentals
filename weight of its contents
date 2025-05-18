@@ -1,0 +1,31 @@
+#include <string>
+using namespace std;
+
+
+int content_weight(int bottle_weight, string scale){
+    string sclfac = "";
+    int result;
+    for(int i =0; i<scale.length(); i++)
+    {
+        if(isdigit(scale[i]))
+        {
+            sclfac += scale[i];
+        }
+        if(scale[i] == ' ')
+        {
+            break;
+        }
+    }
+    int rsclfac = stoi(sclfac);
+    cout << rsclfac << endl;
+    string scaledet = scale.substr(scale.find(' ') +1);
+    if(scaledet == "times larger")
+    {
+        result  = (bottle_weight/(rsclfac+1)) *rsclfac;
+    }
+    else if(scaledet == "times smaller")
+    {
+        result = ((bottle_weight *rsclfac)/(rsclfac+1)) /rsclfac;
+    }
+    return result;
+}
