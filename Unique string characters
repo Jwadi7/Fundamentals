@@ -1,0 +1,19 @@
+std::string solve(std::string a, std::string b) {
+
+    std::string result = "";
+    for(int i =0; i<a.length(); i++)
+    {
+        if(b.find(a[i]) == std::string::npos)
+        {
+            result += a[i];
+        }
+    }
+    for(int i =0; i<b.length(); i++)
+    {
+        if(a.find(b[i]) == std::string::npos)
+        {
+            result += b[i];
+        }
+    }
+    return result;
+}
