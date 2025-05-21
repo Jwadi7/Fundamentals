@@ -1,0 +1,52 @@
+#include <string>
+#include <sstream>
+#include <cctype>
+#include <cmath>
+
+bool isValidInteger(const std::string& s) {
+    if (s.empty()) return false;
+    size_t start = (s[0] == '-') ? 1 : 0;
+    if (start == s.size()) return false;
+
+    for (size_t i = start; i < s.size(); ++i) {
+        if (!std::isdigit(s[i])) return false;
+    }
+
+    return true;
+}
+
+std::string calculateArray(const std::string& stringArray) 
+{
+    std::istringstream iss(stringArray);
+    std::string token;
+    int sum = 0;
+    int count = 0;
+
+    while (std::getline(iss, token, ';')) {
+        if (isValidInteger(token)) {
+            int num = std::stoi(token);
+            sum += num;
+            ++count;
+        }
+    }
+
+    if (count == 0) return "0,0,FALSE";
+
+    int avg = static_cast<int>(std::round(static_cast<double>(sum) / count));
+
+    int digitSum = 0;
+    for (char c : std::to_string(avg)) {
+        if (std::isdigit(c)) {
+            digitSum += c - '0';
+        }
+    }
+
+    std::ostringstream result;
+    result << avg << ',' << digitSum << ',' << (digitSum % 5 == 0 ? "TRUE" : "FALSE");
+
+    return result.str();
+}
+ ? "TRUE" : "FALSE");
+
+    return result.str();
+}
