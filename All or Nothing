@@ -1,0 +1,40 @@
+#include <vector>
+
+bool possibly_perfect(const std::vector<char>& key, const std::vector<char>& answers)
+{
+    for(int i =0; i<key.size(); i++)
+    {
+        if(key.at(i) == '_')
+        {
+            if(i == key.size() -1)
+                {
+                    return true;
+                }
+            continue;
+        }
+        if(key.at(i) != answers.at(i))
+        {
+            break;
+        }
+        if(i == key.size() -1 )
+        {
+            return true;
+        }
+    }
+    for(int i =0;i<key.size(); i++)
+    {
+        if(key.at(i) == '_')
+            {
+                if(i == key.size() -1)
+                {
+                    return true;
+                }
+                continue;
+            }
+        if(key.at(i) == answers.at(i))
+        { 
+                return false;
+        }
+    }
+    return true;
+}
