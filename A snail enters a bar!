@@ -1,0 +1,7 @@
+bool canSnailReachEnd(double length, double speed, double lengthIncreases)
+{
+    if(lengthIncreases > speed) {return false;}
+    if(lengthIncreases * (365*24*60) + length > speed*(365*24*60)) {return false;}
+
+    return true;
+}
