@@ -1,0 +1,40 @@
+bool AreTheySameDigits(const std::string& input1, const std::string& input2)
+{
+    if(input1.length() != input2.length()) { return false;}
+    int freq[10] = {0};
+
+    const char* s1 = input1.data();
+    const char* s2 = input2.data();
+    size_t len = input1.length();
+
+    for(int i =0; i<len; ++i)
+    {
+        freq[s1[i] - '0']++;
+        freq[s2[i] - '0']--;
+    }
+    for(int i =0 ; i<10; i++)
+    {
+        if(freq[i] != 0)
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+unsigned long findLowestInt(unsigned int k1) {
+    unsigned int k2 = k1+1;
+    unsigned long n = 1;
+    std::string k1r = "";
+    std::string k2r = "";
+    for(;;n++)
+    {
+        k1r = std::to_string(k1 * n);
+        k2r = std::to_string(k2 * n );
+        if(AreTheySameDigits(k1r, k2r))
+        {
+            return n;
+        }
+    }
+  return 0;
+}
