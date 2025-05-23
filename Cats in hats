@@ -1,0 +1,26 @@
+#include <sstream>
+#include <iomanip>
+#include <algorithm>
+
+
+class Kata
+{
+public:
+
+std::string height(int n)
+    {
+        double height = 0;
+        double TheCatInTheHat = 2000000;
+        for(int i = n; i>=0; i--)
+        {
+            height += TheCatInTheHat;
+            TheCatInTheHat = TheCatInTheHat/(2.5);
+        }
+        std::ostringstream oss;
+        oss << std::fixed << std::setprecision(3) << height ;
+
+        std::string result = oss.str();
+        return result;
+    }
+
+};
