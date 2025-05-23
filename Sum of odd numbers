@@ -1,0 +1,16 @@
+unsigned int startOfRow(unsigned int x){
+    if(x == 1) {return 1;}
+    return 2*(x-1)+ startOfRow(x-1);
+} 
+
+long long rowSumOddNumbers(unsigned n){
+  long long result  =0;
+    long long index = startOfRow(n);
+  int numberOfIterations = 0;
+  for(; numberOfIterations<n; numberOfIterations++)
+  {
+    result +=index;
+    index+=2;
+  }
+    return result;
+}
