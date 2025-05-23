@@ -1,0 +1,24 @@
+bool IsitPrime(unsigned int x){
+    double xd = double(x);
+    if(x ==1){ return false;}
+    for(int i = 1; i<x; i++)
+    {
+        if(((xd/i) == (x/i)) && i!=1)
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+unsigned int oddNotPrime(unsigned int n){
+    unsigned int result =0;
+    for(int i = 1; i<=n; i+=2)
+    {
+        if(!IsitPrime(i))
+        {
+            result++;
+        }
+    }
+    return result;
+}
