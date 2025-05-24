@@ -1,0 +1,28 @@
+#include <vector>
+
+int stray(std::vector<int> numbers) {
+    for(int i =0; i<numbers.size(); i++)
+    {
+        if(i ==0 || i== numbers.size()-1)
+        {
+            if(numbers.at(0) == numbers.at(numbers.size()-1))
+            {
+                continue;
+            }
+            if(numbers.at(0) == numbers.at(1))
+            {
+                return numbers.at(numbers.size()-1);
+            }
+            if(numbers.at(numbers.size()-1) == numbers.at(numbers.size() -2))
+            {
+                return numbers.at(0);
+            }
+            else{ return numbers.at(numbers.size() -1);}
+        }
+        if(numbers.at(i+1) == numbers.at(i-1) && numbers.at(i) != numbers.at(i+1))
+        {
+            return numbers.at(i);
+        }
+    }
+    return 0;
+};
