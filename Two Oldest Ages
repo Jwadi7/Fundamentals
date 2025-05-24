@@ -1,0 +1,11 @@
+#include <vector>
+#include <array>
+
+std::array<int, 2> two_oldest_ages(std::vector<int> ages)
+{
+    std::array<int,2> result;
+    std::sort(ages.begin(), ages.end());
+    result[0] = ages.at(ages.size() -2);
+    result[1] = ages.at(ages.size() -1);
+    return result;
+}
