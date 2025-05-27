@@ -1,0 +1,28 @@
+class Solution {
+public:
+    void rotate(vector<vector<int>>& matrix) {
+    vector<int> newrow;
+    vector<vector<int>> oldmatrix = matrix;
+    int rowcounter =0;
+    for(int i =0; i< oldmatrix.at(0).size(); i++)
+    {
+        for(int j = oldmatrix.size()-1; j>=0; j--)
+        {
+            newrow.emplace_back(oldmatrix.at(j).at(i));
+            if(j == 0)
+            {
+                if(rowcounter <= matrix.size()-1)
+                {
+                    matrix.at(rowcounter)  = newrow;
+                    newrow = {};
+                    rowcounter++;
+                } else {
+                    matrix.emplace_back(newrow);
+                    newrow = {};
+                    rowcounter++;
+                }
+            }  
+        }
+    }
+    }
+};
