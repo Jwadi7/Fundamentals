@@ -1,0 +1,24 @@
+#include <vector>
+#include <unordered_map>
+
+int findOdd(const std::vector<int>& numbers){
+    std::unordered_map<int, int> frequencies;
+    for(int i =0; i<numbers.size(); i++)
+    {
+        if(frequencies.find(numbers.at(i)) == frequencies.end())
+        {
+            frequencies.insert(std::pair<int, int> (numbers.at(i), 1));
+        }
+        else{
+            frequencies.at(numbers.at(i))++;
+        }
+    }
+    for(auto frequency: frequencies)
+    {
+        if(frequency.second %2 == 1)
+        {
+            return frequency.first;
+        }
+    }
+    return 0;
+}
