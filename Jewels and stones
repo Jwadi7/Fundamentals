@@ -1,0 +1,12 @@
+class Solution {
+public:
+    int numJewelsInStones(string jewels, string stones) {
+        int My_jewels = 0;
+        for(int i =0; i<jewels.length(); i++)
+        {
+            My_jewels += count(stones.begin(), stones.end(), jewels[i]);
+        }
+        return My_jewels;
+    }
+
+};
