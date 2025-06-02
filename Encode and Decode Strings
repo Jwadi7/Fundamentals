@@ -1,0 +1,26 @@
+string encode(vector<string>& strs) {
+    std::string answer = "";
+    for(int i = 0; i< strs.size(); i++){
+        for(int j = 0; j<strs.at(i).size(); j++){
+            strs.at(i).at(j) = strs.at(i).at(j)+5;
+        }
+        answer += strs.at(i) + ' ';
+    }
+    return answer;
+
+}
+
+vector<string> decode(string s) {
+    vector<std::string> answer;
+    std::string strings = "";
+    for(int i =0; i<s.length(); i++){
+        if(s[i] == ' '){
+            answer.emplace_back(strings);
+            strings = "";
+            continue;
+        }
+        s[i] = s[i]-5;
+        strings += s[i];
+    }
+    return answer;
+}
