@@ -1,0 +1,16 @@
+vector<int> topKFrequent(vector<int>& nums, int k) {
+        vector<int> result;
+        unordered_map<int, int> frequencies;
+        for(int i =0; i<nums.size(); i++){
+            frequencies[nums.at(i)]++;
+        }
+        vector<pair<int,int>> freq(frequencies.begin(), frequencies.end());
+        std::sort(freq.begin(), freq.end(), [](const auto& a, const auto& b) {
+            return a.second < b.second;});
+
+        int start = static_cast<int>(freq.size()) - k;
+        for (int i = static_cast<int>(freq.size()) - 1; i >= start; --i) {
+            result.emplace_back(freq.at(i).first); 
+        }
+        return result;
+    }
