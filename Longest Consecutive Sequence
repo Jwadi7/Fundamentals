@@ -1,0 +1,30 @@
+class Solution {
+public:
+    int longestConsecutive(vector<int>& nums) {
+    if(nums.size()==0){ return 0;}
+    vector<int> LengthOf_Consectuives;
+    sort(nums.begin(), nums.end());
+    auto newEnd = unique(nums.begin(), nums.end());
+    nums.erase(newEnd, nums.end());
+    int longest = 1;
+    int Consecutive = 1;
+
+    for(int i = 0; i<nums.size()-1; i++){
+        if(nums.at(i)+1== nums.at(i+1)){
+            Consecutive++;
+        } else {
+            LengthOf_Consectuives.emplace_back(Consecutive);
+            Consecutive = 1;
+        }
+    }
+    LengthOf_Consectuives.emplace_back(Consecutive);
+
+    for(int Consec : LengthOf_Consectuives){
+        if(Consec > longest){
+            longest = Consec;
+        }
+    } 
+    return longest;      
+}
+
+};
