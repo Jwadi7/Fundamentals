@@ -1,0 +1,15 @@
+vector<int> twoSum(vector<int>& numbers, int target) {
+    int left = 0;
+    int right = numbers.size()-1;
+    int sum =0;
+    vector<int> result(2,-1);
+    while(left<right){
+        sum = numbers.at(left)+numbers.at(right);
+        if(sum == target){
+            result.at(0) = left+1;
+            result.at(1) = right+1;
+            break;} 
+        else if(sum < target){left++;}
+        else{ right--;}}
+    return result;}
+
