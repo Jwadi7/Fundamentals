@@ -1,0 +1,27 @@
+int maxArea(vector<int>& height) {
+    int greatestarea = INT_MIN;
+    int left = 0;
+    int right = height.size()-1;
+    while(left < right){
+        int currentarea = (right - left) * (min(height.at(left), height.at(right)));
+        if(greatestarea < currentarea){
+            greatestarea = currentarea;
+        }
+        int shortestheight = min(height.at(left), height.at(right));
+        if(shortestheight == height.at(left)){
+            left++;
+        } else{
+            right--;
+        }
+    }
+    // for(int i =0; i<height.size(); i++){
+    //     for(int j = i; j<height.size(); j++){
+    //         int currentarea = (j - i) * (min(height.at(j), height.at(i)));
+    //         if(greatestarea < currentarea){
+    //             greatestarea = currentarea;
+    //         }
+    //     }
+    // }
+        return greatestarea;
+    }
+
