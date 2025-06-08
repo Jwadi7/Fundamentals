@@ -1,0 +1,34 @@
+int evalRPN(vector<string>& tokens) {
+        stack<int> operands;
+        
+        for(int i = 0; i<tokens.size(); i++){
+            if(tokens[i] == "+"){
+                int top = operands.top();
+                operands.pop();
+                int secondtop = operands.top();
+                operands.pop();
+                operands.push(top+secondtop);
+            } else if(tokens[i] == "*"){
+                int top = operands.top();
+                operands.pop();
+                int secondtop = operands.top();
+                operands.pop();
+                operands.push(top*secondtop);
+            } else if(tokens[i] == "/"){
+                int top = operands.top();
+                operands.pop();
+                int secondtop = operands.top();
+                operands.pop();
+                operands.push(secondtop/top);
+            } else if(tokens[i] == "-"){
+                int top = operands.top();
+                operands.pop();
+                int secondtop = operands.top();
+                operands.pop();
+                operands.push(secondtop-top);
+            } else {
+                operands.push(stoi(tokens[i]));
+            }
+        }
+        return operands.top();
+    }
