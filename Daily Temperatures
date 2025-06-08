@@ -1,0 +1,51 @@
+/*
+vector<int> dailyTemperatures(vector<int>& temperatures) {
+        vector<int> answer;
+        answer.reserve(temperatures.size()*sizeof(int));
+        int CurrentTemp;
+        int DaysToWait = 0;
+        int size = temperatures.size();
+        int Left = 0;
+        int Right = Left+1;
+
+        while(Left <= size-2 ){
+            CurrentTemp = temperatures[Left];
+            if(temperatures[Right] > CurrentTemp){
+                answer.emplace_back(++DaysToWait);
+                DaysToWait = 0;
+                Left++;
+                Right = Left+1;
+            } else {
+                if(Right < size-1){
+                    Right++;
+                    DaysToWait++;
+                } else{
+                    answer.emplace_back(0);
+                    Left++;
+                    Right = Left+1;
+                    DaysToWait = 0;
+                }
+            }
+        }
+        answer.emplace_back(0);
+        return answer;
+    }
+*/
+
+// more efficient way 
+vector<int> dailyTemperatures(vector<int>& temperatures) {
+    int n = temperatures.size();
+    vector<int> answer(n, 0);  
+    stack<int> st;  
+
+    for (int i = 0; i < n; ++i) {
+        while (!st.empty() && temperatures[i] > temperatures[st.top()]) {
+            int prevIndex = st.top();
+            st.pop();
+            answer[prevIndex] = i - prevIndex;  
+        }
+        st.push(i);  
+    }
+
+    return answer;
+}
