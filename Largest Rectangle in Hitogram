@@ -1,0 +1,76 @@
+int largestRectangleArea(vector<int>& heights) {
+        vector<pair<int, int>> st;
+        st.reserve(heights.size()); 
+        int MaxArea = 0;
+        int size = heights.size();
+        for(int i = 0; i<size; i++){
+            int start = i;
+            int h = heights[i];
+            while(!st.empty() && st.back().second > h){
+                int index = st.back().first;
+                int heightpopped = st.back().second;
+                st.pop_back();
+                MaxArea = max(MaxArea, (i- index)*heightpopped);
+                start = index;
+            }
+            st.push_back({start, h});
+        }
+
+        while(!st.empty()){
+            int i = st.back().first;
+            int h = st.back().second;
+
+            MaxArea = max(MaxArea, (h*(size-i)));
+            st.pop_back();
+
+        }
+        return MaxArea;
+    }
+
+
+
+// int CalculateArea(vector<int>& vec, int start, int end){
+//     if (start > end) return 0;
+//     int MinIndex = start;
+//     for(int i = start+1;i<=end;i++){
+//         if(vec[i] <vec[MinIndex]){
+//             MinIndex = i;
+//         }
+//     }
+
+//     int AreaWithMin = (vec[MinIndex])*(end - start +1);
+
+//     int LeftArea = CalculateArea(vec, start, MinIndex-1);
+//     int RightArea = CalculateArea(vec, MinIndex+1, end);
+
+//     return max({AreaWithMin, LeftArea, RightArea});
+// }
+
+// int largestRectangleArea(vector<int>& heights){
+    
+//     return CalculateArea(heights, 0, heights.size()-1);
+// }
+
+
+
+// int largestRectangleArea(vector<int>& heights){
+//     int n = heights.size();
+//     int MaxArea = 0;
+//     for(int i = 0; i<n; i++){
+//         int currentH = heights[i];
+//         int left = i;
+//         while(left > 0 && heights[left-1] >= currentH){
+//             left--;
+//         }
+//         int right = i;
+//         while(right <n-1 && heights[right+1] >=currentH){
+//             right++;
+//         }
+//         int width = right-left+1;
+//         int area = currentH *width;
+//         if(area >MaxArea){
+//             MaxArea=area;
+//         }
+//     }
+//     return MaxArea;
+// }
